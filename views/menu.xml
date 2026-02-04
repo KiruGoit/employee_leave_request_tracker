@@ -17,16 +17,13 @@
 
     </record>
 
-    <!-- Clearance Records Menu -->
+    <!-- Menu -->
     <menuitem id="menu_employee_leave_tracker"
               name="Leaves"
               parent="menu_leave_tracker_root"
               action="action_employee_leave_request_tracker"
               sequence="10"/>
-    <!-- <menuitem id="menu_clearance_reports"
-              name="Clearance Reports"
-              parent="menu_inf_clearance_root"
-              sequence="10"/> -->
+  
 
 
  

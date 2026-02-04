@@ -1,0 +1,84 @@
+<odoo>
+<record id="hr_employee_form_inherited" model="ir.ui.view">
+   <field name="name">hr.employee.form.inherited</field>
+    <field name="model">hr.employee</field>         
+    <field name="inherit_id" ref="hr.view_employee_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='work_email']" position="after">
+         <field name="leave_balance"/>
+         <field name="leave_health"/>
+        </xpath>
+    
+    </field>
+</record>
+
+<record id="hr_leave_view_form_inherited" model="ir.ui.view">
+   <field name="name">hr.leave.view.form.inherited</field>
+    <field name="model">hr.leave</field>         
+    <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='holiday_status_id']" position="after">
+         <field name="reason_leave"/>
+         <field name="leave_type"/>
+         
+        </xpath>
+    
+    </field>
+</record>
+
+
+<!--Tree-->
+    <record id="view_leave_tracker_tree_inherited" model="ir.ui.view">
+        <field name="name">hr.leave.inherit.tree</field>
+        <field name="model">hr.leave</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="holiday_status_id"/>
+                <field name="reason_leave"/>
+                <field name="date_from"/>
+                 <field name="date_to"/>
+                  <field name="duration_display"/>
+                  <field name="state"  widget="badge" decoration-info="state == 'draft'" decoration-warning="state in ('confirm','validate1')" decoration-success="state == 'validate'"/>
+                  <field name="leave_type"   widget="badge"   decoration-primary="leave_type == 'annual'" decoration-danger="leave_type =='sick'" decoration-muted="leave_type == 'other'"/>
+               
+                               
+            </tree>
+        </field>
+    </record>
+
+
+
+
+
+
+  <!--search-->
+    <record id="view_leave_tracker_tree_search" model="ir.ui.view">
+        <field name="name">hr.leave.inherit.search</field>
+        <field name="model">hr.leave</field>
+        <field name="arch" type="xml">
+            <search string="Clearance Records">
+                <field name="employee_id"/>              
+                <!--==============================-->
+                <filter name="Less Then 3 days"  domain="[('duration_display','&lt;','4')]"/>
+                <filter name="Less Then a Week "  domain="[('duration_display','&lt;','8')]"/>
+                <filter name="More Then a Month "  domain="[('duration_display','&gt;=','30')]"/>
+                                     <separator/>
+                <!--==========================================-->
+
+                  <group expand="0" string="Group By">
+                    <filter name="group_leave_type" string="Leave Type" context="{'group_by':'leave_type'}"/>
+                    <separator/>
+                    <filter name="state" string="State" context="{'group_by':'state'}"/>
+                </group>
+                
+
+
+            </search>
+        </field>
+    </record>
+
+
+
+
+</odoo>

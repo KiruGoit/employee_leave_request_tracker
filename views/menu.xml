@@ -2,8 +2,8 @@
 <odoo>
 
     <!-- Main Menu -->
-    <menuitem id="menu_leave_tracker_root"
-              name="Leave Tracker"
+    <menuitem id="menu_hr_root"
+              name="HR"
               sequence="10"
               />
 
@@ -11,25 +11,37 @@
     <record id="action_employee_leave_request_tracker" model="ir.actions.act_window">
         <field name="name">Leave Tracker</field>
         <field name="res_model">hr.leave</field>
-        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="view_mode">tree,form,kanban</field>
         <field name="view_id" ref="view_leave_tracker_tree_inherited"/>
          <field name="search_view_id" ref="view_leave_tracker_tree_search"/>
         
     </record>
 
+    <record id="action_employee_leave_request_Analysis" model="ir.actions.act_window">
+        <field name="name">Leave Analysis</field>
+        <field name="res_model">hr.leave</field>
+        <field name="view_mode">pivot</field>
+        
+    </record>
 
+   
 
     <!-- sub-Menu -->
     <menuitem id="menu_employee_leave_tracker"
-              name="Leaves"
-              parent="menu_leave_tracker_root"
+              name="Leave Tracker"
+              parent="menu_hr_root"
               action="action_employee_leave_request_tracker"
               sequence="10"/>
 
     <menuitem id="menu_view_personal_leaves"
               name="View My Leaves"
-              parent="menu_leave_tracker_root"
+              parent="menu_employee_leave_tracker"
               action="hr_holidays.hr_leave_action_my"
+              sequence="10"/>
+     <menuitem id="menu_leave_Analysis"
+              name="Analysis Report"
+              parent="menu_employee_leave_tracker"
+              action="action_employee_leave_request_Analysis"
               sequence="10"/>
 
     

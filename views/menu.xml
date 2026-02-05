@@ -11,7 +11,7 @@
     <record id="action_employee_leave_request_tracker" model="ir.actions.act_window">
         <field name="name">Leave Tracker</field>
         <field name="res_model">hr.leave</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
         <field name="view_id" ref="view_leave_tracker_tree_inherited"/>
          <field name="search_view_id" ref="view_leave_tracker_tree_search"/>
         

@@ -14,7 +14,8 @@
             "security/leave_security.xml",
             "security/ir.model.access.csv",
             "views/hr_leave_tracker.xml",
-            "views/menu.xml"
+            "views/menu.xml",
+            "report/report_leave.xml"
              ],
     'installable': True,
     'application': True,

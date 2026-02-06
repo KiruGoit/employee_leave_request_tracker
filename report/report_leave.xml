@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<record id="action_leave_report" model="ir.actions.report">
+       <field name="name">Leave Tracker</field>
+       <field name="model">hr.leave</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">employee_leave_request_tracker.report_leave_request</field>
+       <field name="print_report_name">'Leave_request - %s' % (object.employee_id.name)</field>
+       <!-- Show in Action menu (form) -->
+        <field name="binding_model_id" ref="hr_holidays.model_hr_leave"/>
+        <field name="binding_type">action</field>
+        <field name="binding_view_types">form</field>
+
+</record>
+
+<template id="report_leave_request">
+    <t t-call="web.external_layout">
+        <main>
+            <t t-foreach="docs" t-as="o">
+                <h2>Leave Request</h2>
+                <p><strong>Employee:</strong> <span t-esc="o.employee_id.name"/></p>
+            </t>
+        </main>
+    </t>
+</template>
+
+
+</odoo>

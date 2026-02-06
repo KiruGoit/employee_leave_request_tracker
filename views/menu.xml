@@ -17,11 +17,11 @@
         
     </record>
 
+    <!--Analysis report action-->
     <record id="action_employee_leave_request_Analysis" model="ir.actions.act_window">
         <field name="name">Leave Analysis</field>
         <field name="res_model">hr.leave</field>
         <field name="view_mode">pivot</field>
-        
     </record>
 
    
@@ -43,11 +43,5 @@
               parent="menu_employee_leave_tracker"
               action="action_employee_leave_request_Analysis"
               sequence="10"/>
-
-    
-  
-
-
- 
 
 </odoo>

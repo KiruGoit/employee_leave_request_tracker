@@ -4,7 +4,18 @@
     <field name="model">hr.employee</field>         
     <field name="inherit_id" ref="hr.view_employee_form"/>
     <field name="arch" type="xml">
-      
+        <header>
+            <button name="%(action_leave_count_button)d" 
+                     type="action" 
+                    class="secondery" 
+                         >
+                <field name="leave_count" widget="statinfo" string="Leaves"/>
+            </button>
+        </header>
+    
+
+
+
         <xpath expr="//field[@name='work_email']" position="after">
          <field name="leave_balance"/>
          <field name="leave_health"/>

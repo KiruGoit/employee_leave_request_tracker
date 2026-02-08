@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- Main Menu -->
-    <menuitem id="menu_hr_root"
-              name="HR"
-              sequence="10"
-              />
 
-    <!-- Main Action -->
+
+
+
+ <!-- Main Action -->
     <record id="action_employee_leave_request_tracker" model="ir.actions.act_window">
         <field name="name">Leave Tracker</field>
         <field name="res_model">hr.leave</field>
-        <field name="view_mode">tree,form,kanban</field>
-        <field name="view_id" ref="view_leave_tracker_tree_inherited"/>
-         <field name="search_view_id" ref="view_leave_tracker_tree_search"/>
-        
+        <field name="view_mode">kanban,form,tree</field>
+           <field name="view_id" ref="view_leave_tracker_tree_inherited"/>
+           <field name="search_view_id" ref="view_leave_tracker_search"/>
     </record>
 
     <!--Analysis report action-->
@@ -24,15 +21,26 @@
         <field name="view_mode">pivot</field>
     </record>
 
-    <!--smart butten action-->
+    <!-- smart butten action-->
      <record id="action_leave_count_button" model="ir.actions.act_window">
              <field name="name">Leave count</field>
             <field name="res_model">hr.leave</field>
              <field name="view_mode">tree,form</field>
+             
          <field name="domain">[('employee_id', '=', active_id)]</field>
-        </record>
+        </record> 
    
 
+
+
+
+    <!-- Main Menu -->
+    <menuitem id="menu_hr_root"
+              name="HR"
+              sequence="10"
+              />
+
+   
     <!-- sub-Menu -->
     <menuitem id="menu_employee_leave_tracker"
               name="Leave Tracker"
@@ -50,5 +58,7 @@
               parent="menu_employee_leave_tracker"
               action="action_employee_leave_request_Analysis"
               sequence="10"/>
+
+
 
 </odoo>

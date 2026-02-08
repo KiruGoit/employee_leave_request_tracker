@@ -24,7 +24,6 @@
                 <p><strong>Start Date:</strong> <span t-esc="o.date_from"/></p>
                 <p><strong>End Date:</strong> <span t-esc="o.date_to"/></p>
                 <p><strong>Duration:</strong> <span t-esc="o.duration_display"/></p>
-                <p><strong>Leave Type:</strong> <span t-esc="o.leave_type"/></p>
                 <p><strong>Detailed Reason:</strong> <span t-esc="o.reason_leave"/></p>
                  <p><strong>Approval Status:</strong> <span t-esc="o.state"/></p>
             </t>

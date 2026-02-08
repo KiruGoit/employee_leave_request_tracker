@@ -7,14 +7,12 @@
         <header>
             <button name="%(action_leave_count_button)d" 
                      type="action" 
-                    class="secondery" 
+                    class="btn-secondary" 
                          >
-                <field name="leave_count" widget="statinfo" string="Leaves"/>
+                <field name="leave_count" widget="statinfo" string=" : Leave"/>
             </button>
         </header>
     
-
-
 
         <xpath expr="//field[@name='work_email']" position="after">
          <field name="leave_balance"/>
@@ -23,6 +21,35 @@
     
     </field>
 </record>
+
+
+  <!--search-->
+    <record id="view_leave_tracker_search" model="ir.ui.view">
+        <field name="name">hr.leave.inherited.search</field>
+        <field name="model">hr.leave</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+               <field name="employee_id"/>              
+                <!--==============================-->
+                <filter name="Less Then 3 days"  domain="[('duration_display','&lt;','4')]"/>
+                <filter name="Less Then a Week "  domain="[('duration_display','&lt;','8')]"/>
+                <filter name="More Then a Month "  domain="[('duration_display','&gt;=','30')]"/>
+                                     <separator/>
+
+
+                  <group expand="0" string="Group By">
+                    <filter name="state" string="State" context="{'group_by':'state'}"/>
+                </group>
+                    
+            </search>
+        </field>
+    </record>
+
+
+
+
+
+<!--leave form-->
 
 <record id="hr_leave_view_form_inherited" model="ir.ui.view">
    <field name="name">hr.leave.view.form.inherited</field>
@@ -37,7 +64,7 @@
        </header>
         <xpath expr="//field[@name='holiday_status_id']" position="after">
          <field name="reason_leave"/>
-         <field name="leave_type"/>
+         
          <field name="binary_file" filename="binary_file_name"/>
 
 
@@ -53,51 +80,24 @@
         <field name="name">hr.leave.inherit.tree</field>
         <field name="model">hr.leave</field>
         <field name="arch" type="xml">
-            <tree>
-                <field name="employee_id"/>
+         <tree string="Time Off Requests" sample="1">
+               <field name="employee_id"/>
                 <field name="holiday_status_id"/>
-                <field name="reason_leave"/>
+                
                 <field name="date_from"/>
                  <field name="date_to"/>
                   <field name="duration_display"/>
                   <field name="state"  widget="badge" decoration-info="state == 'draft'" decoration-warning="state in ('confirm','validate1')" decoration-success="state == 'validate'"/>
-                  <field name="leave_type"   widget="badge"   decoration-primary="leave_type == 'annual'" decoration-danger="leave_type =='sick'" decoration-muted="leave_type == 'other'"/>
-               
-                               
+                  <field name="reason_leave"/>
             </tree>
+       
+    
         </field>
     </record>
 
 
 
 
-
-
-  <!--search-->
-    <record id="view_leave_tracker_tree_search" model="ir.ui.view">
-        <field name="name">hr.leave.inherit.search</field>
-        <field name="model">hr.leave</field>
-        <field name="arch" type="xml">
-            <search string="Clearance Records">
-                <field name="employee_id"/>              
-                <!--==============================-->
-                <filter name="Less Then 3 days"  domain="[('duration_display','&lt;','4')]"/>
-                <filter name="Less Then a Week "  domain="[('duration_display','&lt;','8')]"/>
-                <filter name="More Then a Month "  domain="[('duration_display','&gt;=','30')]"/>
-                                     <separator/>
-                <!--==========================================-->
-
-                  <group expand="0" string="Group By">
-                    <filter name="group_leave_type" string="Leave Type" context="{'group_by':'leave_type'}"/>
-                    <separator/>
-                    <filter name="state" string="State" context="{'group_by':'state'}"/>
-                </group>
-                
-
-
-            </search>
-        </field>
-    </record>
 
  <!--Kanban View-->
   <record id="view_leave_tracker_kanban" model="ir.ui.view">
@@ -189,6 +189,7 @@
     <pivot string="Leave Summary" sample="1">
                 <field name="employee_id" type="row"/>
                 <field name="date_from" type="col"  interval="month"/>
+                <field name="department_id" type="col" />
                 <field name="number_of_days" type="measure"/>
             </pivot>
             </field>

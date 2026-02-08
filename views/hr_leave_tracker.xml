@@ -7,7 +7,7 @@
         <header>
             <button name="%(action_leave_count_button)d" 
                      type="action" 
-                    class="btn-secondary" 
+                    class="btn-secondery" 
                          >
                 <field name="leave_count" widget="statinfo" string=" : Leave"/>
             </button>

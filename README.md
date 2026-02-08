@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Employee Leave Request Tracker
 
 ## Overview
@@ -45,3 +46,6 @@ and Leave Management system to provide better visibility, validation, and report
 
 ## Notes
 - This module follows Odoo inheritance best practices.
+=======
+
+>>>>>>> 400e908d63033b2d30d0ffe96b9f37427ebc0caf

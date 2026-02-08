@@ -10,7 +10,7 @@
    <record id="group_leave_employee" model="res.groups">
        <field name="name">User: Employee</field>
        <field name="category_id" ref="employee_leave_request_tracker.module_category_employee_leave_request_tracker"/>
-         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+       <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
    
    </record>
    

@@ -7,7 +7,6 @@ class HrEmployee(models.Model):
     leave_balance = fields.Integer(
         string="Leave Balance",
         compute="_compute_leave_balance",
-    
     )
 
     leave_requests_id = fields.One2many(
@@ -15,7 +14,6 @@ class HrEmployee(models.Model):
         'employee_id',
         string="Leave Requests"
     )
-    
     allocation_ids = fields.One2many('hr.leave.allocation', 
                                      'employee_id',
                                      string='allocation')
@@ -27,14 +25,9 @@ class HrEmployee(models.Model):
         ],
         string="Leave Health",
         compute="_compute_leave_health",
-        
     )
     leave_count = fields.Integer(compute="_compute_leave_count")
 
-
-
-
-    
     @api.depends('leave_requests_id.number_of_days',
                  "allocation_ids.number_of_days")
     def _compute_leave_balance(self):      

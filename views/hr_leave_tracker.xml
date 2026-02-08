@@ -9,7 +9,7 @@
                      type="action" 
                     class="secondery" 
                          >
-                <field name="leave_count" widget="statinfo" string="Leaves"/>
+                <field name="leave_count" widget="statinfo" string=" : Leave"/>
             </button>
         </header>
     
@@ -189,6 +189,7 @@
     <pivot string="Leave Summary" sample="1">
                 <field name="employee_id" type="row"/>
                 <field name="date_from" type="col"  interval="month"/>
+                <field name="department_id" type="col" />
                 <field name="number_of_days" type="measure"/>
             </pivot>
             </field>

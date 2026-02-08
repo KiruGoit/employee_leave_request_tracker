@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Employee Leave Request Tracker
 
 ## Overview

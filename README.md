@@ -39,13 +39,11 @@ and Leave Management system to provide better visibility, validation, and report
           - Approve or refuse leave requests using quick action buttons.
           - Monitor employee leave statuses.
 
-3.HR:
+ 3.HR:
          - Navigate to HR → Leave Tracker → All Leaves.
          - Print leave requests as PDF reports.
          - Use pivot view to analyze leaves by employee or month.
 
 ## Notes
 - This module follows Odoo inheritance best practices.
-=======
 
->>>>>>> 400e908d63033b2d30d0ffe96b9f37427ebc0caf

@@ -8,17 +8,24 @@
     'depends': [
         'hr',
         'hr_holidays',
-        'base',
     ],
     'data': [
             "security/leave_security.xml",
             "security/ir.model.access.csv",
-            "views/menu.xml",
-            "views/hr_leave_tracker.xml",
-            "report/report_leave.xml"
+            #  Report
+            "report/report_leave.xml",
+            "report/hr_leave_report_action.xml",
+            #  The action view for smart button
+            "views/smart_btton_action.xml",
+            #  views
+            "views/employee_leave_tracker.xml",
+            # All the action
+            "views/employee_leave_tracker_action.xml",
+            # Menu
+            "views/employee_leave_tracker_menu.xml",
              ],
     'installable': True,
     'application': True,
     'auto_install': False,
-    # 'icon': 'static/description/icon.png',
+    'icon': 'static/description/icon.png',
 }

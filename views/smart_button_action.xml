@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+      <!-- smart butten action-->
+     <record id="action_leave_count_button" model="ir.actions.act_window">
+             <field name="name">Leave count</field>
+             <field name="res_model">hr.leave</field>
+             <field name="view_mode">tree,form</field>   
+         <field name="domain">[('employee_id', '=', active_id)]</field>
+        </record> 
+
+</odoo>

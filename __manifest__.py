@@ -16,7 +16,7 @@
             "report/report_leave.xml",
             "report/hr_leave_report_action.xml",
             #  The action view for smart button
-            "views/smart_btton_action.xml",
+            "views/smart_button_action.xml",
             #  views
             "views/employee_leave_tracker.xml",
             # All the action
@@ -27,5 +27,5 @@
     'installable': True,
     'application': True,
     'auto_install': False,
-    'icon': 'static/description/icon.png',
+   
 }

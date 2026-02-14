@@ -26,6 +26,10 @@
               action="action_employee_leave_request_Analysis"
               sequence="10"/>
 
-
+      <menuitem id="menu_leave_dashboard_minimal"
+              name="Dashboard"
+              parent="menu_employee_leave_tracker"
+              action="action_leave_dashboard_minimal"
+              sequence="1"/>
 
 </odoo>

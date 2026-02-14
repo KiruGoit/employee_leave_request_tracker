@@ -20,5 +20,14 @@
     </record>
 
  
+  <!-- Action  Dashboard-->
+    <record id="action_leave_dashboard_minimal" model="ir.actions.act_window">
+        <field name="name">Leave Dashboard</field>
+        <field name="res_model">hr.leave</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_leave_dashboard_graph_minimal"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
 
 </odoo>

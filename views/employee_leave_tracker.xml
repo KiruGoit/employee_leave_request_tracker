@@ -77,10 +77,10 @@
                 <filter name="More Then a Month "  domain="[('duration_display','&gt;=','30')]"/>
                                      <separator/>
                  <filter string="Approved" name="approved" domain="[('state','=','validate')]"/>
-
+                                     <separator/>
                   <group expand="0" string="Group By">
-                    <filter string="Department" context="{'group_by':'department_id'}"/>
-                    <filter name="state" string="State" context="{'group_by':'state'}"/>
+                    
+                    <filter name="State" string="State" context="{'group_by':'state'}"/>
                 </group>
                     
             </search>

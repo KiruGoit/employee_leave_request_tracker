@@ -76,9 +76,10 @@
                 <filter name="Less Then a Week "  domain="[('duration_display','&lt;','8')]"/>
                 <filter name="More Then a Month "  domain="[('duration_display','&gt;=','30')]"/>
                                      <separator/>
-
+                 <filter string="Approved" name="approved" domain="[('state','=','validate')]"/>
 
                   <group expand="0" string="Group By">
+                    <filter string="Department" context="{'group_by':'department_id'}"/>
                     <filter name="state" string="State" context="{'group_by':'state'}"/>
                 </group>
                     
@@ -193,6 +194,14 @@
     </field>
 </record>
 
+
+
+
+
+
+<!--======================== Dashboard =====================-->
+    <!--===============================================-->
+
 <!--Pivot View-->
   <record id="view_leave_tracker_pivot" model="ir.ui.view">
     <field name="name">hr.leave.inherit.pivot</field>
@@ -208,8 +217,8 @@
     </record>
 
 <!-- Graph View -->
-    <record id="view_leave_dashboard_graph_minimal" model="ir.ui.view">
-        <field name="name">hr.leave.dashboard.graph.minimal</field>
+    <record id="view_leave_dashboard_graph" model="ir.ui.view">
+        <field name="name">hr.leave.dashboard.graph</field>
         <field name="model">hr.leave</field>
         <field name="arch" type="xml">
             <graph string="Leaves per Month" type="bar">
@@ -219,7 +228,17 @@
         </field>
         
     </record>
-
+ <!-- Pie  -->
+  <record id="view_leave_dashboard_pie" model="ir.ui.view">
+         <field name="name">hr.leave.dashboard.pie</field>
+         <field name="model">hr.leave</field>
+         <field name="arch" type="xml">
+            <graph string="Leaves by Department" type="pie">
+                   <field name="department_id"/>
+                   <field name="number_of_days" type="measure"/>
+             </graph>
+        </field>
+    </record>
 
 
 </odoo>

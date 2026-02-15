@@ -12,22 +12,29 @@
     </record>
 
 
-    <!--Analysis report action-->
+    
+
+ 
+  <!-- Action  Dashboard-->
+    <record id="action_leave_dashboard_graph" model="ir.actions.act_window">
+        <field name="name">Leave Dashboard</field>
+        <field name="res_model">hr.leave</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_leave_dashboard_graph"/>
+    </record>
+
+     <record id="action_leave_dashboard_pie" model="ir.actions.act_window">
+        <field name="name">Leave Dashboard</field>
+        <field name="res_model">hr.leave</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_leave_dashboard_pie"/>
+    </record>
+ 
+  <!--Action Pivot-->
     <record id="action_employee_leave_request_Analysis" model="ir.actions.act_window">
         <field name="name">Leave Analysis</field>
         <field name="res_model">hr.leave</field>
         <field name="view_mode">pivot</field>
-    </record>
-
- 
-  <!-- Action  Dashboard-->
-    <record id="action_leave_dashboard_minimal" model="ir.actions.act_window">
-        <field name="name">Leave Dashboard</field>
-        <field name="res_model">hr.leave</field>
-        <field name="view_mode">graph</field>
-        <field name="view_id" ref="view_leave_dashboard_graph_minimal"/>
-        <field name="domain">[]</field>
-        <field name="context">{}</field>
     </record>
 
 </odoo>

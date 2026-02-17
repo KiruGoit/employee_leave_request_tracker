@@ -24,7 +24,8 @@
    <menuitem id="menu_employee_leave_tracker_reporting"
               name="Reporting"
               parent="menu_hr_root"
-              sequence="20"/>
+              sequence="20"
+              />
         
     
  <!--Sub menu-->

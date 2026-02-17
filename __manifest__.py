@@ -15,10 +15,14 @@
             #  Report
             "report/report_leave.xml",
             "report/hr_leave_report_action.xml",
+            
+
             #  The action view for smart button
             "views/smart_button_action.xml",
             #  views
             "views/employee_leave_tracker.xml",
+            # wizard
+            "wizard/bulk_leave_wizard_view.xml",
             # All the action
             "views/employee_leave_tracker_action.xml",
             # Menu

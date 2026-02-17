@@ -14,8 +14,6 @@ class HrLeave(models.Model):
          compute='_compute_leave_count',
          store=True
     )
-    
-
 
     @api.constrains('number_of_days')
     def _check_leave_balance(self):

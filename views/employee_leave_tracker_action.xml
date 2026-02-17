@@ -37,4 +37,21 @@
         <field name="view_mode">pivot</field>
     </record>
 
+
+    
+    <!--Action Wizard-->
+
+        <record id="action_bulk_leave_wizard" model="ir.actions.act_window">
+        <field name="name">Bulk Leave Approval</field>
+        <field name="res_model">bulk.leave.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_leave_ids': active_ids}</field>
+
+        <!-- Show in Action menu (tree) -->
+        <field name="binding_model_id" ref="hr_holidays.model_hr_leave"/>
+        <field name="binding_type">action</field>
+        <field name="binding_view_types">tree,form</field>
+    </record>
+
 </odoo>

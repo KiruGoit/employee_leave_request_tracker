@@ -10,68 +10,65 @@ class HrEmployee(models.Model):
     )
 
     leave_requests_id = fields.One2many(
-        'hr.leave',
-        'employee_id',
-        string="Leave Requests"
+        "hr.leave", "employee_id", string="Leave Requests"
     )
-    allocation_ids = fields.One2many('hr.leave.allocation', 
-                                     'employee_id',
-                                     string='allocation')
+    allocation_ids = fields.One2many(
+        "hr.leave.allocation", "employee_id", string="allocation"
+    )
     leave_health = fields.Selection(
         [
-            ('good', 'Good'),
-            ('warning', 'Warning'),
-            ('low', 'Low'),
+            ("good", "Good"),
+            ("warning", "Warning"),
+            ("low", "Low"),
         ],
         string="Leave Health",
         compute="_compute_leave_health",
     )
     leave_count = fields.Integer(compute="_compute_leave_count")
 
-    @api.depends('leave_requests_id.number_of_days',
-                 "allocation_ids.number_of_days")
-    def _compute_leave_balance(self):      
+    @api.depends("leave_requests_id.number_of_days", "allocation_ids.number_of_days")
+    def _compute_leave_balance(self):
 
         for employee in self:
             # Find all validated leave allocations for an employee
-            allocation = self.env['hr.leave.allocation'].search([
-                ('employee_id', '=', employee.id),
-                ('state', '=', 'validate'),
-                ])
+            allocation = self.env["hr.leave.allocation"].search(
+                [
+                    ("employee_id", "=", employee.id),
+                    ("state", "=", "validate"),
+                ]
+            )
             # sum allocated days
-            allocated_days = sum(allocation.mapped('number_of_days'))
-              
+            allocated_days = sum(allocation.mapped("number_of_days"))
+
             # Find all  validated leave take by an employee
-            leaves = self.env['hr.leave'].search([
-                ('employee_id', '=', employee.id),
-                ('state', '=', 'validate'),
-                    ])
+            leaves = self.env["hr.leave"].search(
+                [
+                    ("employee_id", "=", employee.id),
+                    ("state", "=", "validate"),
+                ]
+            )
             # Sum used leave
-            used_days = sum(leaves.mapped('number_of_days'))
-           
-            # Find the remaining leave and store it in leave balance 
+            used_days = sum(leaves.mapped("number_of_days"))
+
+            # Find the remaining leave and store it in leave balance
             employee.leave_balance = allocated_days - used_days
 
-    @api.depends('leave_balance')
+    @api.depends("leave_balance")
     def _compute_leave_health(self):
-        
+
         for employee in self:
             if employee.leave_balance > 10:
-                employee.leave_health = 'good'
+                employee.leave_health = "good"
             elif employee.leave_balance > 5:
-                employee.leave_health = 'warning'
+                employee.leave_health = "warning"
             else:
-                employee.leave_health = 'low'
+                employee.leave_health = "low"
 
-
-    @api.depends('leave_requests_id.state',)
+    @api.depends(
+        "leave_requests_id.state",
+    )
     def _compute_leave_count(self):
         for employee in self:
-            leaves = self.env['hr.leave'].search([
-                ('employee_id', '=', employee.id),
-                ('state', '=', 'validate')
-
-                    ])
-            # count leaves
-            employee.leave_count = len(leaves)
-            
+            employee.leave_count = self.env["hr.leave"].search_count(
+                [("employee_id", "=", employee.id), ("state", "=", "validate")]
+            )

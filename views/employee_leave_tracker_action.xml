@@ -1,57 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
- 
-
- <!-- Main Action -->
+    <!-- Main Action -->
     <record id="action_employee_leave_request_tracker" model="ir.actions.act_window">
         <field name="name">Leave Tracker</field>
         <field name="res_model">hr.leave</field>
         <field name="view_mode">kanban,form,tree</field>
-           <field name="view_id" ref="view_leave_tracker_tree_inherited"/>
-           <field name="search_view_id" ref="view_leave_tracker_search"/>
+        <field name="view_id" ref="view_leave_tracker_tree_inherited"/>
+        <field name="search_view_id" ref="view_leave_tracker_search"/>
     </record>
-
-
-    
-
- 
-  <!-- Action  Dashboard-->
+    <!-- Action  Dashboard-->
     <record id="action_leave_dashboard_graph" model="ir.actions.act_window">
         <field name="name">Leave Dashboard</field>
         <field name="res_model">hr.leave</field>
         <field name="view_mode">graph</field>
         <field name="view_id" ref="view_leave_dashboard_graph"/>
     </record>
-
-     <record id="action_leave_dashboard_pie" model="ir.actions.act_window">
+    <record id="action_leave_dashboard_pie" model="ir.actions.act_window">
         <field name="name">Leave Dashboard</field>
         <field name="res_model">hr.leave</field>
         <field name="view_mode">graph</field>
         <field name="view_id" ref="view_leave_dashboard_pie"/>
     </record>
- 
-  <!--Action Pivot-->
+    <!--Action Pivot-->
     <record id="action_employee_leave_request_Analysis" model="ir.actions.act_window">
         <field name="name">Leave Analysis</field>
         <field name="res_model">hr.leave</field>
         <field name="view_mode">pivot</field>
     </record>
-
-
-    
     <!--Action Wizard-->
-
-        <record id="action_bulk_leave_wizard" model="ir.actions.act_window">
+    <record id="action_bulk_leave_wizard" model="ir.actions.act_window">
         <field name="name">Bulk Leave Approval</field>
         <field name="res_model">bulk.leave.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="context">{'default_leave_ids': active_ids}</field>
-
         <!-- Show in Action menu (tree) -->
         <field name="binding_model_id" ref="hr_holidays.model_hr_leave"/>
         <field name="binding_type">action</field>
         <field name="binding_view_types">tree,form</field>
     </record>
-
 </odoo>

@@ -1,9 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hr_employee_manager,access.hr.employee.manager,model_hr_employee,employee_leave_request_tracker.group_leave_manager,1,1,0,0
-access_hr_employee_admin,hr.employee.admin,model_hr_employee,employee_leave_request_tracker.group_hr_admin,1,1,1,1
+access_hr_employee_manager,access.hr.employee.manager,model_hr_employee,hr.group_hr_user,1,1,0,0
+access_hr_employee_admin,hr.employee.admin,model_hr_employee,hr.group_hr_manager,1,1,1,1
 
-access_hr_leave_employee,hr.leave.employee,model_hr_leave,employee_leave_request_tracker.group_leave_employee,1,0,1,0
-access_hr_leave_manager,hr.leave.manager,model_hr_leave,employee_leave_request_tracker.group_leave_manager,1,1,1,0
-access_hr_leave_admin,hr.leave.admin,model_hr_leave,employee_leave_request_tracker.group_hr_admin,1,1,1,1
+access_hr_leave_employee,hr.leave.employee,model_hr_leave,base.group_user,1,0,1,0
+access_hr_leave_manager,hr.leave.manager,model_hr_leave,hr_holidays.group_hr_holidays_responsible,1,1,1,0
+access_hr_leave_admin,hr.leave.admin,model_hr_leave,hr_holidays.group_hr_holidays_manager,1,1,1,1
 
-access_bulk_leave_wizard_admin,bulk.leave.wizard.admin,model_bulk_leave_wizard,employee_leave_request_tracker.group_hr_admin,1,1,1,1
+access_bulk_leave_wizard_admin,bulk.leave.wizard.admin,model_bulk_leave_wizard,hr_holidays.group_hr_holidays_manager,1,1,1,1

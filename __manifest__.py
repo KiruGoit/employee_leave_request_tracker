@@ -9,6 +9,7 @@
     "data": [
         "security/leave_security.xml",
         "security/ir.model.access.csv",
+        "data/leave_mail_template.xml",
         "report/report_leave.xml",
         "report/hr_leave_report_action.xml",
         #  The action view for smart button

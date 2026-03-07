@@ -1,64 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- hr.employee inherited -->
-
-
     <record id="hr_employee_form_inherited" model="ir.ui.view">
         <field name="name">hr.employee.form.inherited</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form" />
         <field name="arch" type="xml">
-            <header>
-                <button name="%(action_leave_count_button)d"
-                    type="action"
-                    class="btn-secondery"
-                >
-                    <field name="leave_count" widget="statinfo" string=" : Leave" />
+            <div class="oe_button_box">
+                <button name="%(action_leave_count_button)d" type="action"  class="oe_stat_button">
+                    <field name="leave_count" widget="statinfo" string="Leaves : "/>
                 </button>
-            </header>
-
-
-            <xpath expr="//field[@name='work_email']" position="after">
-                <field name="leave_balance" />
-                <field name="leave_health" />
-            </xpath>
-
+                <!--Leave Stat button -->
+                <button class="oe_stat_button smart_button" >
+                    <field name="leave_stats_display" widget="statinfo" string="Stats"/>
+                </button>
+            </div>
         </field>
     </record>
-
-
     <!--hr.leave
     inhertited-->
-
     <record id="hr_leave_view_form_inherited" model="ir.ui.view">
         <field name="name">hr.leave.view.form.inherited</field>
         <field name="model">hr.leave</field>
         <field name="inherit_id" ref="hr_holidays.hr_leave_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//header" position="inside">
-                <button name="%(action_leave_count_button)d" type="action"
-                    class="oe_stat_button"
-                    icon="fa-calendar">
-                    <field name="leave_count" widget="statinfo" string="Leaves" />
+            <xpath expr="//sheet" position="inside">
+                <div name="button_box" class="oe_button_box"  groups="base.group_user" />
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(action_leave_count_button)d"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-calendar">
+                    <field name="leave_count" widget="statinfo" string="Leaves"/>
+                </button>
+                <!--Leave Stat button -->
+                <button class="oe_stat_button smart_button" >
+                    <field name="leave_stats_display" widget="statinfo" string="Stats"/>
                 </button>
             </xpath>
-
             <xpath expr="//field[@name='holiday_status_id']" position="after">
                 <field name="reason_leave" />
-
                 <field name="binary_file" filename="binary_file_name" />
-
-
             </xpath>
-
         </field>
     </record>
-
-
     <!--Views
     for Leave Tracker-->
-
-
     <!--search
     view-->
     <record id="view_leave_tracker_search" model="ir.ui.view">
@@ -84,7 +72,6 @@
         <field name="model">hr.leave</field>
         <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree" />
         <field name="arch" type="xml">
-
             <xpath expr="//field[@name='state']" position="after">
                 <field name="reason_leave" />
                 <field name="leave_health" widget="badge"
@@ -92,12 +79,8 @@
                     decoration-warning="leave_health == 'warning'"
                     decoration-danger="leave_health == 'low'" />
             </xpath>
-
-
         </field>
     </record>
-
-
     <!--Kanban
     View-->
     <record id="view_leave_tracker_kanban" model="ir.ui.view">
@@ -105,13 +88,10 @@
         <field name="model">hr.leave</field>
         <field name="inherit_id" ref="hr_holidays.hr_leave_view_kanban" />
         <field name="arch" type="xml">
-
             <xpath expr="//kanban" position="attributes">
                 <attribute name="default_group_by">state</attribute>
                 <attribute name="records_draggable">1</attribute>
             </xpath>
-
-
             <xpath expr="//strong[hasclass('o_kanban_record_title')]" position="replace">
                 <div class="d-flex align-items-center mb-1">
                     <img
@@ -125,7 +105,6 @@
                     </strong>
                 </div>
             </xpath>
-
             <xpath expr="//div[hasclass('o_leave_kanban_name')]" position="after">
                 <div class="text-muted small mt-1" t-if="record.reason_leave.raw_value">
                     <i class="fa fa-comment me-1" />
@@ -138,15 +117,11 @@
                         decoration-danger="leave_health == 'low'" />
                 </div>
             </xpath>
-
         </field>
     </record>
-
-
     <!--========================
     Dashboard =====================-->
     <!--===============================================-->
-
     <!--Pivot
     View-->
     <record id="view_leave_tracker_pivot" model="ir.ui.view">
@@ -161,7 +136,6 @@
             </pivot>
         </field>
     </record>
-
     <!-- Graph View -->
     <record id="view_leave_dashboard_graph" model="ir.ui.view">
         <field name="name">hr.leave.dashboard.graph</field>
@@ -172,7 +146,6 @@
                 <field name="number_of_days" type="measure" />
             </graph>
         </field>
-
     </record>
     <!-- Pie  -->
     <record id="view_leave_dashboard_pie" model="ir.ui.view">
@@ -185,6 +158,4 @@
             </graph>
         </field>
     </record>
-
-
 </odoo>

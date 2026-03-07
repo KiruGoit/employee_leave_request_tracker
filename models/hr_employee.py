@@ -25,6 +25,16 @@ class HrEmployee(models.Model):
         compute="_compute_leave_health",
     )
     leave_count = fields.Integer(compute="_compute_leave_count")
+    leave_stats_display = fields.Char(
+        string="Stats", compute="_compute_leave_stats"
+    )
+
+    @api.depends("leave_balance", "leave_health")
+    def _compute_leave_stats(self):
+        for employee in self:
+            health = employee.leave_health or ""
+            balance = employee.leave_balance or 0
+            employee.leave_stats_display = f"{health}:{balance}"
 
     @api.depends("leave_requests_id.number_of_days", "allocation_ids.number_of_days")
     def _compute_leave_balance(self):
